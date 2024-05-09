@@ -1,14 +1,15 @@
-function wordBreak(s, wordDict) {
-  const wordSet = new Set(wordDict);
-  const dp = new Array(s.length + 1).fill(false);
-  dp[0] = true;
-  for (let end = 1; end <= s.length; end++) {
-    for (let start = 0; start < end; start++) {
-      if (dp[start] && wordSet.has(s.substring(start, end))) {
-        dp[end] = true;
-        break;
-      }
+function merge(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  const merged = [];
+  for (const interval of intervals) {
+    if (!merged.length || merged[merged.length - 1][1] < interval[0]) {
+      merged.push(interval);
+    } else {
+      merged[merged.length - 1][1] = Math.max(
+        merged[merged.length - 1][1],
+        interval[1],
+      );
     }
   }
-  return dp[s.length];
+  return merged;
 }
