@@ -1,15 +1,9 @@
-function merge(intervals) {
-  intervals.sort((a, b) => a[0] - b[0]);
-  const merged = [];
-  for (const interval of intervals) {
-    if (!merged.length || merged[merged.length - 1][1] < interval[0]) {
-      merged.push(interval);
-    } else {
-      merged[merged.length - 1][1] = Math.max(
-        merged[merged.length - 1][1],
-        interval[1],
-      );
-    }
+function isSubsequence(s, t) {
+  let i = 0;
+  let j = 0;
+  while (i < s.length && j < t.length) {
+    if (s[i] === t[j]) i++;
+    j++;
   }
-  return merged;
+  return i === s.length;
 }
