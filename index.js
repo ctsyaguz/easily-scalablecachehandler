@@ -1,3 +1,3 @@
-const word = "hello";
-const reversedWord = word.split("").reverse().join("");
-console.log(reversedWord); // olleh
+const lcm = (a, b) => {
+  return (a * b) / gcd(a, b);
+};
